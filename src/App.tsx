@@ -1,10 +1,13 @@
 import React from 'react';
 import './App.css';
+import {Login} from "./screens/Login";
 
 function App() {
-  return (
-    <div>hello</div>
-  );
+    return (
+        <>
+            <Login/>
+        </>
+    );
 }
 
 export default App;
