@@ -75,11 +75,21 @@ body {
     margin-top: 15%;
   }
 }
+@media (max-width: 576px) {
+  #login-content {
+    padding-top: unset;
+  }
+}
 @media (max-width: 992px) {
   #project-logo {
     width: 60%;
     margin: 0 auto;
     display: block;
+  }
+}
+@media (min-width: 576px) and (max-width: 993px) {
+  .login-sm-1 {
+    display: block !important;
   }
 }
 

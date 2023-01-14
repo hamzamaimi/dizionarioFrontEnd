@@ -76,7 +76,11 @@
 
 
 // Small devices (landscape phones, 576px and up)
-//@media (max-width: 576px) { ... }
+@media (max-width: 576px) {
+  #login-content{
+    padding-top: unset;
+  }
+}
 
 // Medium devices (tablets, 768px and up)
 //@media (max-width: 768px) { ... }
@@ -95,3 +99,12 @@
 
 // XX-Large devices (larger desktops, 1400px and up)
 //@media (max-width: 1400px) { ... }
+
+
+// Example
+// Apply styles starting from medium devices and up to extra large devices
+@media (min-width: 576px) and (max-width: 993px) {
+  .login-sm-1{
+    display: block!important;
+  }
+}
