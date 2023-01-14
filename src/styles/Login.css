@@ -10,10 +10,6 @@ body {
   height: 100%;
 }
 
-#project-logo {
-  width: 100%;
-}
-
 .customContainer {
   background: #F7F9FA;
   width: 100%;
@@ -51,9 +47,39 @@ body {
   position: relative;
 }
 
-@media (min-width: 768px) {
-  #login-content {
-    padding-top: 25%;
+.login-form-label {
+  font-weight: bold;
+}
+
+#login-content {
+  padding-top: 25%;
+}
+
+#login-form > form {
+  margin: 5%;
+  padding-top: 10%;
+}
+
+#login-button {
+  margin-bottom: 5%;
+}
+
+#project-logo {
+  width: 100%;
+}
+
+@media (min-width: 992px) {
+  #login-form {
+    width: 100%;
+    height: 60%;
+    margin-top: 15%;
+  }
+}
+@media (max-width: 992px) {
+  #project-logo {
+    width: 60%;
+    margin: 0 auto;
+    display: block;
   }
 }
 

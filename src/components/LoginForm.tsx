@@ -2,21 +2,21 @@ import React from "react";
 
 export const LoginForm = (props : {width : string}) => {
     return(
-        <div id={"login-form"} className={"mx-auto"} style={{width: `${props.width}`, height: "40%", marginTop: "15%"}}>
-            <form style={{margin: "5%"}}>
-                <div className="mb-3">
-                    <label className="form-label">Email</label>
+        <div id={"login-form"} className={"mx-auto"}>
+            <form>
+                <div className="mb-3 text-start">
+                    <label className="login-form-label">Email</label>
                     <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
                 </div>
-                <div className="mb-3">
-                    <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
+                <div className="mb-3 text-start">
+                    <label className="login-form-label">Password</label>
                     <input type="password" className="form-control" id="exampleInputPassword1"/>
                 </div>
                 <div className="mb-3 form-check">
                     <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
                         <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
                 </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <button id={"login-button"} type="submit" className="btn btn-primary">Submit</button>
             </form>
         </div>
     )
