@@ -23,7 +23,7 @@ export const LoginForm = (props : {width : string}) => {
 
                 <div className={"row"}>
                     <div className={"col-xl-4 col-12"}>
-                        <div id={"login-git-hub"} className={"alternative-login"}>
+                        <div id={"login-git-hub"} className={"alternative-login"} title={"to implement..."}>
                             <a>
                                 <img src="images/git-hub.svg" width={"24"} height={"24"}/>
                                 <span style={{marginLeft: "8px"}}>GitHub</span>
@@ -31,7 +31,7 @@ export const LoginForm = (props : {width : string}) => {
                         </div>
                     </div>
                     <div className={"col-xl-4 col-12"}>
-                        <div id={"login-google"} className={"alternative-login"}>
+                        <div id={"login-google"} className={"alternative-login"} title={"to implement..."}>
                             <a>
                                 <img src="images/google.svg" width={"24"} height={"24"}/>
                                 <span style={{marginLeft: "8px"}}>Google</span>
@@ -39,7 +39,7 @@ export const LoginForm = (props : {width : string}) => {
                         </div>
                     </div>
                     <div className={"col-xl-4 col-12"}>
-                        <div id={"login-twitter"} className={"alternative-login"}>
+                        <div id={"login-twitter"} className={"alternative-login"} title={"to implement..."}>
                             <a>
                                 <img src="images/twitter.svg" width={"24"} height={"24"}/>
                                 <span style={{marginLeft: "8px"}}>Twitter</span>
