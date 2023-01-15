@@ -14,7 +14,7 @@ export const LoginForm = (props : {width : string}) => {
                 </div>
 
                 <button id={"login-button"} type="submit" className="btn btn-primary">
-                    Login
+                    Log in
                 </button>
 
                 <p id={"login-form-divider"}>

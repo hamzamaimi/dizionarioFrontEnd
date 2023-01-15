@@ -13,9 +13,8 @@
 #login-title{
   font-family: $fontFamilies;
   font-size: 44px;
-  font-weight: bold;
   line-height: 52px;
-  color: rgb(42, 48, 57);
+  color:#29c9f8;
 }
 #login-form{
   background-color: white;
@@ -81,6 +80,16 @@
 #login-git-hub{
   border: 1px solid #adadad;
   color: #333333;
+}
+#login-actions > p > a{
+  margin-left: 2%;
+  margin-right: 2%;
+  color: #29c9f8;
+  text-decoration: none;
+  border-bottom: dotted #29c9f8 1px;
+}
+#login-actions > p > span{
+  color: #29c9f8;
 }
 // X-Small devices (portrait phones, less than 576px)
 // No media query for `xs` since this is the default in Bootstrap

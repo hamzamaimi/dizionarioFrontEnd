@@ -24,6 +24,17 @@ export const Login = () => {
                                     </p>
                                     <LoginForm width={"90%"} />
                                 </div>
+                                <div id={"login-actions"}>
+                                    <p>
+                                        <a href={"#"}>
+                                            Registrati
+                                        </a>
+                                        <span>|</span>
+                                        <a href={"#"}>
+                                            Reset password
+                                        </a>
+                                    </p>
+                                </div>
                             </div>
                             <div className={"col-lg-3 col-12 col-sm-1"}/>
                         </div>
