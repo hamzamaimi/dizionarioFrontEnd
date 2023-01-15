@@ -7,8 +7,8 @@ export const Login = () => {
         <>
             <div className={"customContainer container-fluid"}>
                 <div className={"row h-100"} id="first-row">
-                    <div className={"col-lg-2 col-md"}/>
-                    <div className={"col-lg-8 col-md-7 col-12"}>
+                    <div className={"col-xxl col-lg col-md"}/>
+                    <div className={"col-xxl-7 col-lg-9 col-md-7 col-12"}>
                         <div className={"row"}>
                             <div className={"col-lg-3 col-12 col-sm-12 h-100"}>
                                 <ProjectLogo width="100%" />
@@ -28,7 +28,7 @@ export const Login = () => {
                             <div className={"col-lg-3 col-12 col-sm-1"}/>
                         </div>
                     </div>
-                    <div className={"col-lg-2 col-md"}></div>
+                    <div className={"col-xxl col-lg col-md"}></div>
                 </div>
             </div>
         </>

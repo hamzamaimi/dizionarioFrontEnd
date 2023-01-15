@@ -40,12 +40,47 @@
 #login-form>form{
   margin: 5%;
   padding-top: 10%;
+  padding-bottom: 10%;
 }
 #login-button{
-  margin-bottom: 5%;
+  margin-bottom: 10%;
+  margin-top: 5%;
+  width: 100%;
+  font-weight: bold;
+  background: linear-gradient(0deg, #3C80CF 0%, #5B9FEF 100%) no-repeat;
 }
 #project-logo{
   width: 100%;
+}
+#login-form-divider{
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid lightgrey;
+  line-height: 0em;
+  color: grey;
+}
+#login-form-divider > small{
+  background: #fff;
+  padding: 0 10px;
+}
+.alternative-login{
+  border: 1px solid black;
+  margin-top: 5%;
+  padding: 5%;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#login-twitter{
+  border: 1px solid #9fd0f5;
+  color: #55ACEE;
+}
+#login-google{
+  border: 1px solid #efaaa1;
+  color: #dd4b39;
+}
+#login-git-hub{
+  border: 1px solid #adadad;
+  color: #333333;
 }
 // X-Small devices (portrait phones, less than 576px)
 // No media query for `xs` since this is the default in Bootstrap
