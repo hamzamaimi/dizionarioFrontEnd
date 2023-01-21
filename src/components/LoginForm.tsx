@@ -1,8 +1,5 @@
 import React from "react";
 import axios from 'axios';
-import {Simulate} from "react-dom/test-utils";
-import compositionStart = Simulate.compositionStart;
-import {data} from "jquery";
 
 export const LoginForm = (props : {width : string}) => {
 
