@@ -2,6 +2,8 @@ import React from "react"
 import "../styles/Login.css"
 import {ProjectLogo} from "../components/ProjectLogo";
 import {LoginForm} from "../components/LoginForm";
+import { Link } from "react-router-dom";
+
 export const Login = () => {
     return(
         <>
@@ -26,9 +28,9 @@ export const Login = () => {
                                 </div>
                                 <div id={"login-actions"}>
                                     <p>
-                                        <a href={"#"}>
+                                        <Link to="/registration">
                                             Registrati
-                                        </a>
+                                        </Link>
                                         <span>|</span>
                                         <a href={"#"}>
                                             Reset password
