@@ -1,19 +1,25 @@
 import React from "react";
+import axios from 'axios';
+import {Simulate} from "react-dom/test-utils";
+import compositionStart = Simulate.compositionStart;
+import {data} from "jquery";
 
 export const LoginForm = (props : {width : string}) => {
+
     return(
         <div id={"login-form"} className={"mx-auto"}>
-            <form>
+            <form id={"fm-login"} onSubmit={(e) => checkForm(e)}>
+                <div id="credenzialiErrate" className='alert alert-danger d-none' role='alert'>Credenziali errate!</div>
                 <div className="mb-3 text-start">
                     <label className="login-form-label mb-3">Email</label>
-                    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
+                    <input type="email" className="form-control" id="inputEmail" required/>
                 </div>
                 <div className="mb-3 text-start">
                     <label className="login-form-label mb-3">Password</label>
-                    <input type="password" className="form-control" id="exampleInputPassword1"/>
+                    <input type="password" className="form-control" id="InputPassword" required/>
                 </div>
 
-                <button id={"login-button"} type="submit" className="btn btn-primary">
+                <button type="submit" id={"login-button"} className="btn btn-primary">
                     Log in
                 </button>
 
@@ -50,4 +56,25 @@ export const LoginForm = (props : {width : string}) => {
             </form>
         </div>
     )
+}
+
+let checkForm = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    login();
+}
+
+function login() {
+    let email:string = (document.getElementById("inputEmail") as HTMLInputElement).value;
+    let password:string = (document.getElementById("InputPassword") as HTMLInputElement).value;
+
+    axios.post("http://localhost:8080/login", { "email": email, "password": password}).then(res => {
+        if (res.data.hasOwnProperty("error")) {
+            let wrongCredentials = document.getElementById("credenzialiErrate");
+
+            if(wrongCredentials !== null){
+                wrongCredentials.classList.remove("d-none")
+            }
+        }
+
+    })
 }
