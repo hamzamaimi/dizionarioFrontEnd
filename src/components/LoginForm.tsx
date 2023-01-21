@@ -1,7 +1,7 @@
 import React from "react";
 import axios from 'axios';
 
-export const LoginForm = (props : {width : string}) => {
+export const LoginForm = () => {
 
     return(
         <div id={"login-form-container"} className={"mx-auto"}>

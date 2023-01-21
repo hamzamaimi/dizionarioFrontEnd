@@ -3,8 +3,9 @@ import "../styles/Login.css"
 import {ProjectLogo} from "../components/ProjectLogo";
 import {LoginForm} from "../components/LoginForm";
 import { Link } from "react-router-dom";
+import {RegistrationForm} from "../components/RegistrationForm";
 
-export const Login = () => {
+export const Authentication = (props : {title : string, action : string, formType : string}) => {
     return(
         <>
             <div className={"customContainer container-fluid"}>
@@ -19,18 +20,17 @@ export const Login = () => {
                             <div className={"col-lg-6 col-12 col-sm-10 h-100 text-center"}>
                                 <div className={"h-100"} id={"login-content"}>
                                     <p id={"login-title"} className={"align-middle"}>
-                                        Welcome back
+                                        {props.title}
                                     </p>
                                     <p id={"login-sub-title"} className={"align-middle"}>
-                                        Log in to your account.
+                                        {props.action}
                                     </p>
-                                    <LoginForm width={"90%"} />
+
+                                    {getFormComponent(props.formType)}
                                 </div>
                                 <div id={"login-actions"}>
                                     <p>
-                                        <Link to="/registration">
-                                            Registrati
-                                        </Link>
+                                        {getAuthenticationActionAnchors(props.formType)}
                                         <span>|</span>
                                         <a href={"#"}>
                                             Reset password
@@ -46,4 +46,25 @@ export const Login = () => {
             </div>
         </>
     )
+}
+
+const getFormComponent = (formType : string) => {
+    switch (formType){
+        case 'login':
+            return <LoginForm/>;
+        case 'registration':
+            return <RegistrationForm/>;
+        default:
+            return <LoginForm />;
+    }
+}
+const getAuthenticationActionAnchors = (formType : string) => {
+    switch (formType){
+        case 'login':
+            return <Link to='/registration'>Registrati</Link>;
+        case 'registration':
+            return <Link to='/Login'>Log In</Link>;
+        default:
+            return <Link to=''>default</Link>;;
+    }
 }

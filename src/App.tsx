@@ -1,8 +1,7 @@
 import React from 'react';
 import './App.css';
-import {Login} from "./screens/Login";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import {Registration} from "./screens/Registration";
+import {Authentication} from "./screens/Authentication";
 
 function App() {
     // return (
@@ -14,8 +13,13 @@ function App() {
         <>
             <BrowserRouter>
                 <Routes>
-                    <Route path="/registration" element={<Registration />} />
-                    <Route path="" element={<Login />} />
+                    <Route path="/login"
+                           element={<Authentication title={"Welcome back"} action={"Log in to your account."}
+                                                    formType={"login"}/>} />
+                    <Route path="/registration"
+                           element={<Authentication title={"Welcome to WordsMemo"} action={"Create your account."}
+                                                    formType={"registration"}/>} />
+                    {/*<Route path="" element={<Login />} />*/}
                 </Routes>
             </BrowserRouter>
         </>
