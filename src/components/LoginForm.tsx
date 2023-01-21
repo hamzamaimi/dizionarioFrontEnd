@@ -4,7 +4,7 @@ import axios from 'axios';
 export const LoginForm = (props : {width : string}) => {
 
     return(
-        <div id={"login-form"} className={"mx-auto"}>
+        <div id={"login-form-container"} className={"mx-auto"}>
             <form id={"fm-login"} onSubmit={(e) => checkForm(e)}>
                 <div id="credenzialiErrate" className='alert alert-danger d-none' role='alert'>Credenziali errate!</div>
                 <div className="mb-3 text-start">
