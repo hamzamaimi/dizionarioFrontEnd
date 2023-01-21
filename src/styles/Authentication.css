@@ -16,21 +16,21 @@ body {
   height: 100%;
 }
 
-#login-sub-title {
+#authentication-sub-title {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
   font-size: 22px;
   line-height: 30px;
   color: rgb(128, 145, 165);
 }
 
-#login-title {
+#authentication-title {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
   font-size: 44px;
   line-height: 52px;
   color: #29c9f8;
 }
 
-#login-form-container {
+.authentication-form-container {
   background-color: white;
   border-radius: 3px;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.08), inset 0 0 0 1px #DBE3E7;
@@ -50,17 +50,17 @@ body {
   font-weight: bold;
 }
 
-#login-content {
+#authentication-content {
   padding-top: 25%;
 }
 
-#login-form-container > form {
+.authentication-form-container > form {
   margin: 5%;
   padding-top: 10%;
   padding-bottom: 10%;
 }
 
-#login-button {
+#authentication-button {
   margin-bottom: 10%;
   margin-top: 5%;
   width: 100%;
@@ -108,7 +108,7 @@ body {
   color: #333333;
 }
 
-#login-actions > p > a {
+#authentication-actions > p > a {
   margin-left: 2%;
   margin-right: 2%;
   color: #29c9f8;
@@ -116,19 +116,19 @@ body {
   border-bottom: dotted #29c9f8 1px;
 }
 
-#login-actions > p > span {
+#authentication-actions > p > span {
   color: #29c9f8;
 }
 
 @media (min-width: 992px) {
-  #login-form-container {
+  .authentication-form-container {
     width: 100%;
     height: 60%;
     margin-top: 15%;
   }
 }
 @media (max-width: 576px) {
-  #login-content {
+  #authentication-content {
     padding-top: unset;
   }
 }
@@ -140,9 +140,9 @@ body {
   }
 }
 @media (min-width: 576px) and (max-width: 993px) {
-  .login-sm-1 {
+  .authentication-sm-1 {
     display: block !important;
   }
 }
 
-/*# sourceMappingURL=Login.css.map */
+/*# sourceMappingURL=Authentication.css.map */

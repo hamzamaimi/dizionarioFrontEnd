@@ -1,6 +1,6 @@
 import React from "react"
-import "../styles/Login.css"
-import {ProjectLogo} from "../components/ProjectLogo";
+import "../styles/Authentication.css"
+import {ProjectLogo} from "../microComponents/ProjectLogo";
 import {LoginForm} from "../components/LoginForm";
 import { Link } from "react-router-dom";
 import {RegistrationForm} from "../components/RegistrationForm";
@@ -16,19 +16,19 @@ export const Authentication = (props : {title : string, action : string, formTyp
                             <div className={"col-lg-3 col-12 col-sm-12 h-100"}>
                                 <ProjectLogo width="100%" />
                             </div>
-                            <div style={{display: "none"}} className={"col-sm-1 login-sm-1"}/>
+                            <div style={{display: "none"}} className={"col-sm-1 authentication-sm-1"}/>
                             <div className={"col-lg-6 col-12 col-sm-10 h-100 text-center"}>
-                                <div className={"h-100"} id={"login-content"}>
-                                    <p id={"login-title"} className={"align-middle"}>
+                                <div className={"h-100"} id={"authentication-content"}>
+                                    <p id={"authentication-title"} className={"align-middle"}>
                                         {props.title}
                                     </p>
-                                    <p id={"login-sub-title"} className={"align-middle"}>
+                                    <p id={"authentication-sub-title"} className={"align-middle"}>
                                         {props.action}
                                     </p>
 
                                     {getFormComponent(props.formType)}
                                 </div>
-                                <div id={"login-actions"}>
+                                <div id={"authentication-actions"}>
                                     <p>
                                         {getAuthenticationActionAnchors(props.formType)}
                                         <span>|</span>

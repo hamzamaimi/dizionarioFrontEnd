@@ -1,11 +1,13 @@
 import React from "react";
 import axios from 'axios';
+import {AlternativeAuthenticationMethods} from "./AlternativeAuthenticationMethods";
+import {AuthenticationButton} from "../microComponents/AuthenticationButton";
 
 export const LoginForm = () => {
 
     return(
-        <div id={"login-form-container"} className={"mx-auto"}>
-            <form id={"fm-login"} onSubmit={(e) => checkForm(e)}>
+        <div className={"mx-auto authentication-form-container"}>
+            <form onSubmit={(e) => checkForm(e)}>
                 <div id="credenzialiErrate" className='alert alert-danger d-none' role='alert'>Credenziali errate!</div>
                 <div className="mb-3 text-start">
                     <label className="login-form-label mb-3">Email</label>
@@ -16,40 +18,13 @@ export const LoginForm = () => {
                     <input type="password" className="form-control" id="InputPassword" required/>
                 </div>
 
-                <button type="submit" id={"login-button"} className="btn btn-primary">
-                    Log in
-                </button>
+                <AuthenticationButton buttonContent={"Log In"}/>
 
                 <p id={"login-form-divider"}>
-                    <small>OR LOGIN WITH</small>
+                    <small>ACCEDI CON</small>
                 </p>
 
-                <div className={"row"}>
-                    <div className={"col-xl-4 col-12"}>
-                        <div id={"login-git-hub"} className={"alternative-login"} title={"to implement..."}>
-                            <a>
-                                <img src="images/git-hub.svg" width={"24"} height={"24"}/>
-                                <span style={{marginLeft: "8px"}}>GitHub</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div className={"col-xl-4 col-12"}>
-                        <div id={"login-google"} className={"alternative-login"} title={"to implement..."}>
-                            <a>
-                                <img src="images/google.svg" width={"24"} height={"24"}/>
-                                <span style={{marginLeft: "8px"}}>Google</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div className={"col-xl-4 col-12"}>
-                        <div id={"login-twitter"} className={"alternative-login"} title={"to implement..."}>
-                            <a>
-                                <img src="images/twitter.svg" width={"24"} height={"24"}/>
-                                <span style={{marginLeft: "8px"}}>Twitter</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                <AlternativeAuthenticationMethods />
             </form>
         </div>
     )
