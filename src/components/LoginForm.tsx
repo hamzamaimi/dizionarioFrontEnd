@@ -39,6 +39,7 @@ export const LoginForm = () => {
         axios.post("http://localhost:8080/login", { "email": email, "password": password}).then(res => {
             if (res.data.hasOwnProperty("error")) {
                 handleError(res.data.error);
+                return;
             }
 
         })
