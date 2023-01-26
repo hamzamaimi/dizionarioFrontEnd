@@ -3,9 +3,12 @@ import {AlternativeAuthenticationMethods} from "./AlternativeAuthenticationMetho
 import {AuthenticationButton} from "../microComponents/AuthenticationButton";
 import axios from "../api/axios";
 import { data } from "jquery";
+import { useCookies } from "react-cookie";
 
 export const RegistrationForm = () => {
     const [error, setError] = useState("");
+    const [cookies, setCookie, removeCookie] = useCookies(['jwt']);
+
 
     return(
         <div className={"mx-auto authentication-form-container"}>
@@ -67,7 +70,10 @@ export const RegistrationForm = () => {
                     handleError(res.data.error);
                     return;
                 }
-                console.log(data);
+                console.log('1 '+ res.data);
+                console.log('2 '+ res.data.authToken);
+                
+                setCookie('jwt', 'res.data.authToken', {httpOnly: true});
         })
 
     }
