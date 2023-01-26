@@ -4,22 +4,20 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import {Authentication} from "./screens/Authentication";
 
 function App() {
-    // return (
-    //     <>
-    //         <Login/>
-    //     </>
-    // );
     return (
         <>
             <BrowserRouter>
                 <Routes>
                     <Route path="/login"
-                           element={<Authentication title={"Welcome back"} action={"Log in to your account."}
+                           element={<Authentication title={"Bentornato a WordsMemo"} action={"Fai il login al tuo account."}
                                                     formType={"login"}/>} />
                     <Route path="/registration"
-                           element={<Authentication title={"Welcome to WordsMemo"} action={"Create your account."}
+                           element={<Authentication title={"Benvenuto a WordsMemo"} action={"Crea il tuo account."}
                                                     formType={"registration"}/>} />
-                    {/*<Route path="" element={<Login />} />*/}
+                    <Route path="/activateAccount"
+                           element={<Authentication title={"WordsMemo"} action={"Attiva il tuo account."}
+                                                    formType={"activateAccount"}/>} />
+                                                    
                 </Routes>
             </BrowserRouter>
         </>

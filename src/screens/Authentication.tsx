@@ -4,6 +4,7 @@ import {ProjectLogo} from "../microComponents/ProjectLogo";
 import {LoginForm} from "../components/LoginForm";
 import { Link } from "react-router-dom";
 import {RegistrationForm} from "../components/RegistrationForm";
+import {ActivateAccount} from "../components/ActivateAccount";
 
 export const Authentication = (props : {title : string, action : string, formType : string}) => {
     return(
@@ -54,6 +55,8 @@ const getFormComponent = (formType : string) => {
             return <LoginForm/>;
         case 'registration':
             return <RegistrationForm/>;
+        case 'activateAccount':
+            return <ActivateAccount/>;
         default:
             return <LoginForm />;
     }
@@ -62,9 +65,7 @@ const getAuthenticationActionAnchors = (formType : string) => {
     switch (formType){
         case 'login':
             return <Link to='/registration'>Registrati</Link>;
-        case 'registration':
-            return <Link to='/Login'>Log In</Link>;
         default:
-            return <Link to=''>default</Link>;;
+            return <Link to='/Login'>LogIn</Link>;
     }
 }
