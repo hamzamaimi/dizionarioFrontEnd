@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import {AlternativeAuthenticationMethods} from "./AlternativeAuthenticationMethods";
 import {AuthenticationButton} from "../microComponents/AuthenticationButton";
-import axios from "axios";
+import axios from "../api/axios";
+import { data } from "jquery";
 
 export const RegistrationForm = () => {
     const [error, setError] = useState("");
@@ -59,14 +60,14 @@ export const RegistrationForm = () => {
             return;
         }
         
-        axios.post("http://localhost:8080/registration", 
+        axios.post("/registration", 
             { "name": name, "surname": surname, "email": email, "password": password}).then(res => {
                 
                 if (res.data.hasOwnProperty("error")) {
                     handleError(res.data.error);
                     return;
                 }
-
+                console.log(data);
         })
 
     }

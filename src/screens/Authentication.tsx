@@ -30,13 +30,7 @@ export const Authentication = (props : {title : string, action : string, formTyp
                                     {getFormComponent(props.formType)}
                                 </div>
                                 <div id={"authentication-actions"}>
-                                    <p>
-                                        {getAuthenticationActionAnchors(props.formType)}
-                                        <span>|</span>
-                                        <a href={"#"}>
-                                            Reset password
-                                        </a>
-                                    </p>
+                                    {getAuthenticationActionAnchors(props.formType)}
                                 </div>
                             </div>
                             <div className={"col-lg-3 col-12 col-sm-1"}/>
@@ -64,8 +58,26 @@ const getFormComponent = (formType : string) => {
 const getAuthenticationActionAnchors = (formType : string) => {
     switch (formType){
         case 'login':
-            return <Link to='/registration'>Registrati</Link>;
+            return(<p>
+                    <Link to='/registration'>Registrati</Link>
+                    <span>|</span>
+                    <a href={"#"}>Reset password</a>
+                </p>);
+        case 'registration':
+            return(<p>
+                <Link to='/login'>Log In</Link>
+                <span>|</span>
+                <a href={"#"}>Reset password</a>
+            </p>);
         default:
-            return <Link to='/Login'>LogIn</Link>;
+            return(<></>);
     }
 }
+// const getAuthenticationActionAnchors = (formType : string) => {
+//     switch (formType){
+//         case 'login':
+//             return <Link to='/registration'>Registrati</Link>;
+//         default:
+//             return <Link to='/Login'>LogIn</Link>;
+//     }
+// }
