@@ -5,6 +5,7 @@ import { AuthenticationButton } from "../microComponents/AuthenticationButton";
 export const ActivateAccount = () => {
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
+    const [isSented, setIsSented] = useState(false);
 
     return(
         <div className={"mx-auto authentication-form-container"}>
@@ -21,7 +22,7 @@ export const ActivateAccount = () => {
 
                 <AuthenticationButton buttonContent={"Attiva account"}/>
 
-                <a href="#" onClick={() => resendActivationCode()}>Rispedisci codice</a>  
+                <a id="resendAnchor" href="#" onClick={() => resendActivationCode()}>Rispedisci codice</a>  
 
             </form>
         </div>
@@ -33,15 +34,18 @@ export const ActivateAccount = () => {
 
 
     function resendActivationCode(): React.MouseEventHandler<HTMLAnchorElement> | void {
-        axios.post("/resendActivationCode", {}, {withCredentials: true}).then(res => {
-            if (res.data.hasOwnProperty("error")) {
-                handleError(res.data.error);
-                return;
-            }
-            else if(res.data.hasOwnProperty("success")){
-                handleSuccess(res.data);
-            }
-        })
+        if(!isSented){
+            axios.post("/resendActivationCode", {}, {withCredentials: true}).then(res => {
+                if (res.data.hasOwnProperty("error")) {
+                    handleError(res.data.error);
+                    return;
+                }
+                else if(res.data.hasOwnProperty("success")){
+                    handleSuccess(res.data);
+                }
+            })
+            setIsSented(true);
+        }
     }
 
 
