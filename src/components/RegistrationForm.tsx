@@ -2,13 +2,9 @@ import React, { useState } from "react";
 import {AlternativeAuthenticationMethods} from "./AlternativeAuthenticationMethods";
 import {AuthenticationButton} from "../microComponents/AuthenticationButton";
 import axios from "../api/axios";
-import { data } from "jquery";
-import { useCookies } from "react-cookie";
 
 export const RegistrationForm = () => {
     const [error, setError] = useState("");
-    const [cookies, setCookie, removeCookie] = useCookies(['jwt']);
-
 
     return(
         <div className={"mx-auto authentication-form-container"}>
@@ -64,17 +60,14 @@ export const RegistrationForm = () => {
         }
         
         axios.post("/registration", 
-            { "name": name, "surname": surname, "email": email, "password": password}).then(res => {
+            { "name": name, "surname": surname, "email": email, "password": password}, {withCredentials: true}).then(res => {
                 
                 if (res.data.hasOwnProperty("error")) {
                     handleError(res.data.error);
                     return;
                 }
-                console.log('1 '+ res.data);
-                console.log('2 '+ res.data.authToken);
-                
-                setCookie('jwt', 'res.data.authToken', {httpOnly: true});
-        })
+
+            })
 
     }
 

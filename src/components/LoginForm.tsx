@@ -2,8 +2,10 @@ import React, {useState} from "react";
 import axios from '../api/axios';
 import {AlternativeAuthenticationMethods} from "./AlternativeAuthenticationMethods";
 import {AuthenticationButton} from "../microComponents/AuthenticationButton";
+import { useNavigate } from "react-router-dom";
 
 export const LoginForm = () => {
+    const navigate = useNavigate();
     const [error, setError] = useState("");
 
     return(
@@ -36,12 +38,16 @@ export const LoginForm = () => {
         let email:string = (document.getElementById("inputEmail") as HTMLInputElement).value;
         let password:string = (document.getElementById("InputPassword") as HTMLInputElement).value;
 
-        axios.post("/login", { "email": email, "password": password}).then(res => {
+        axios.post("/login", { "email": email, "password": password}, {withCredentials: true}).then(res => {
             if (res.data.hasOwnProperty("error")) {
                 handleError(res.data.error);
                 return;
             }
 
+            if(!res.data.isAccountActive){
+                navigate('/activateAccount', {replace: true})
+                return;
+            }
         })
     }
 
