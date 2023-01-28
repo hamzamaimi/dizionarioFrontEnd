@@ -11,7 +11,7 @@ export const LoginForm = () => {
     return(
         <div className={"mx-auto authentication-form-container"}>
             <form onSubmit={(e) => checkForm(e)}>
-                {error !== "" ? (<div id="credenzialiErrate" className='alert alert-danger' role='alert'>{error}</div>) : ''}
+                {error !== "" ? (<div className='alert alert-danger' role='alert'>{error}</div>) : ''}
                 
                 <div className="mb-3 text-start">
                     <label className="login-form-label mb-3">Email</label>

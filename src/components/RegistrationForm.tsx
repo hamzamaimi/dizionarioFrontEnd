@@ -9,7 +9,7 @@ export const RegistrationForm = () => {
     return(
         <div className={"mx-auto authentication-form-container"}>
             <form onSubmit={(e) => submitRegistrationForm(e)}>
-                {error !== "" ? (<div id="credenzialiErrate" className='alert alert-danger' role='alert'>{error}</div>) : ''}
+                {error !== "" ? (<div className='alert alert-danger' role='alert'>{error}</div>) : ''}
 
                 <div className={"row mb-3 text-start"}>
                     <div className={"col-6"}>
