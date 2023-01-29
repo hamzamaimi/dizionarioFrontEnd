@@ -66,6 +66,7 @@ export const RegistrationForm = () => {
                     handleError(res.data.error);
                     return;
                 }
+                localStorage.setItem("authenticated", "true");
 
             })
 

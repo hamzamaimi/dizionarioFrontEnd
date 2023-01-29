@@ -65,7 +65,7 @@ const getAuthenticationActionAnchors = (formType : string) => {
                 </p>);
         case 'registration':
             return(<p>
-                <Link to='/login'>Log In</Link>
+                <Link to='/'>Log In</Link>
                 <span>|</span>
                 <a href={"#"}>Reset password</a>
             </p>);
@@ -73,11 +73,3 @@ const getAuthenticationActionAnchors = (formType : string) => {
             return(<></>);
     }
 }
-// const getAuthenticationActionAnchors = (formType : string) => {
-//     switch (formType){
-//         case 'login':
-//             return <Link to='/registration'>Registrati</Link>;
-//         default:
-//             return <Link to='/Login'>LogIn</Link>;
-//     }
-// }

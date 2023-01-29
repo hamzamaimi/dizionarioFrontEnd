@@ -43,6 +43,7 @@ export const LoginForm = () => {
                 handleError(res.data.error);
                 return;
             }
+            localStorage.setItem("authenticated", "true");
 
             if(!res.data.isAccountActive){
                 navigate('/activateAccount', {replace: true})
