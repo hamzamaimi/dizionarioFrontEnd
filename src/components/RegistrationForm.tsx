@@ -71,15 +71,23 @@ export const RegistrationForm = (props : {setIsAccountActive? : React.Dispatch<R
                     handleError(res.data.error);
                     return;
                 }
+                localStorage.setItem("authenticated", "true");
+
                 
                 if(!res.data.isAccountActive){
-                    localStorage.setItem("authenticated", "true");
                     if(props.setIsAccountActive != null){
+                        localStorage.setItem("isAccountActive", "false");
+                        localStorage.setItem("userEmail", res.data.userEmail);
                         props.setIsAccountActive(false);
                     }
+                    return
+                }else{
+                    if(props.setIsAccountActive != null){
+                        localStorage.setItem("isAccountActive", "true");
+                        localStorage.setItem("userEmail", res.data.userEmail);
+                        props.setIsAccountActive(true);
+                    }
                 }
-
-                navigate('/activateAccount', {replace:true});
 
             })
 

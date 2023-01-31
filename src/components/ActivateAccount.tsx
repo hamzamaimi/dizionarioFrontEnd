@@ -7,6 +7,10 @@ export const ActivateAccount = () => {
     const [success, setSuccess] = useState("");
     const [isSented, setIsSented] = useState(false);
 
+    if(success==""){
+        setSuccess("Codice di attivazione spedito all' email: \n" + localStorage.getItem("userEmail"))
+    }
+
     return(
         <div className={"mx-auto authentication-form-container"}>
             <form onSubmit={(e) => checkForm(e)}>
@@ -62,7 +66,7 @@ export const ActivateAccount = () => {
 
         switch(data.success){
             case "email has been sent.":
-                setSuccess('L\'email è stata spedita al seguente indirizzo: \n'+ email);
+                setSuccess('Codice di attivazione spedito all\' email: \n \n'+ email);
             break;
         }
     }

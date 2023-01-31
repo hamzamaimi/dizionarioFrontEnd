@@ -10,6 +10,9 @@ function App() {
     const [isAccountActive, setisAccountActive] = useState(true);
 
     if(localStorage.getItem("authenticated") && !isLoggedIn){setisLoggedIn(true)};
+    if(localStorage.getItem("isAccountActive") == 'false' && isAccountActive){
+        setisAccountActive(false);
+    }
     
 
     return (
