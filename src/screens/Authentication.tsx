@@ -3,6 +3,7 @@ import "../styles/Authentication.css"
 import {ProjectLogo} from "../microComponents/ProjectLogo";
 import {LoginForm} from "../components/LoginForm";
 import { Link } from "react-router-dom";
+import {LogOut} from "../components/LogOut";
 import {RegistrationForm} from "../components/RegistrationForm";
 import {ActivateAccount} from "../components/ActivateAccount";
 
@@ -36,7 +37,7 @@ export const Authentication = (props : {title : string, action : string, formTyp
                             <div className={"col-lg-3 col-12 col-sm-1"}/>
                         </div>
                     </div>
-                    <div className={"col-xxl col-lg col-md"}></div>
+                    <div className={"col-xxl col-lg col-md"}><LogOut /></div>
                 </div>
             </div>
         </>
