@@ -14,38 +14,40 @@ export const RegistrationForm = (props : {setIsAccountActive? : React.Dispatch<R
     return(
         <div className={"mx-auto authentication-form-container"}>
             <form onSubmit={(e) => submitRegistrationForm(e)}>
-                {error !== "" ? (<div className='alert alert-danger' role='alert'>{error}</div>) : ''}
+                <div >
+                    {error !== "" ? (<div className='alert alert-danger' role='alert'>{error}</div>) : ''}
 
-                <div className={"row mb-3 text-start"}>
-                    <div className={"col-6"}>
-                        <label className="login-form-label mb-3">Nome</label>
-                        <input type="text" className="form-control" id="inputName" required/>
+                    <div className={"row mb-3 text-start"}>
+                        <div className={"col-6"}>
+                            <label className="login-form-label mb-3">Nome</label>
+                            <input type="text" className="form-control" id="inputName" required/>
+                        </div>
+                        <div className={"col-6"}>
+                            <label className="login-form-label mb-3">Cognome</label>
+                            <input type="text" className="form-control" id="inputCognome" required/>
+                        </div>
                     </div>
-                    <div className={"col-6"}>
-                        <label className="login-form-label mb-3">Cognome</label>
-                        <input type="text" className="form-control" id="inputCognome" required/>
+                    <div className="mb-3 text-start">
+                        <label className="login-form-label mb-3">Email</label>
+                        <input type="email" className="form-control" id="inputEmail" required/>
                     </div>
-                </div>
-                <div className="mb-3 text-start">
-                    <label className="login-form-label mb-3">Email</label>
-                    <input type="email" className="form-control" id="inputEmail" required/>
-                </div>
-                <div className="mb-3 text-start">
-                    <label className="login-form-label mb-3">Password</label>
-                    <input type="password" className="form-control" id="InputPassword" required/>
-                </div>
-                <div className="mb-3 text-start">
-                    <label className="login-form-label mb-3">Ripeti Password</label>
-                    <input type="password" className="form-control" id="InputPassword1" required/>
-                </div>
+                    <div className="mb-3 text-start">
+                        <label className="login-form-label mb-3">Password</label>
+                        <input type="password" className="form-control" id="InputPassword" required/>
+                    </div>
+                    <div className="mb-3 text-start">
+                        <label className="login-form-label mb-3">Ripeti Password</label>
+                        <input type="password" className="form-control" id="InputPassword1" required/>
+                    </div>
 
-                <AuthenticationButton buttonContent={"Registrati"}/>
+                    <AuthenticationButton buttonContent={"Registrati"}/>
 
-                <p id={"login-form-divider"}>
-                    <small>REGISTRATI CON</small>
-                </p>
+                    <p id={"login-form-divider"}>
+                        <small>REGISTRATI CON</small>
+                    </p>
 
-                <AlternativeAuthenticationMethods />
+                    <AlternativeAuthenticationMethods />
+                </div>
             </form>
         </div>
     )
