@@ -18,7 +18,7 @@ export const LoginForm =  (props : {setIsAccountActive? : React.Dispatch<React.S
                         <label className="login-form-label mb-3">Email</label>
                         <input type="email" className="form-control" id="inputEmail" required/>
                     </div>
-                    <div className="mb-3 text-start">
+                    <div className="mb-4 text-start">
                         <label className="login-form-label mb-3">Password</label>
                         <input type="password" className="form-control" id="InputPassword" required/>
                     </div>
