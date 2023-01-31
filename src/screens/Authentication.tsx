@@ -12,7 +12,16 @@ export const Authentication = (props : {title : string, action : string, formTyp
         <>
             <div className={"customContainer container-fluid"}>
                 <div className={"row h-100"} id="first-row">
-                    <div className={"col-xxl col-lg col-md"}/>
+                    <div className={"col-xxl col-lg col-md text-center"}>
+                        {
+                            (localStorage.getItem("authenticated") && localStorage.getItem("isAccountActive"))?
+                            <div id="upperLogOutIconInActivateAccountScreen">
+                                <LogOut />
+                            </div>
+                                :
+                            <></>
+                        }
+                    </div>
                     <div className={"col-xxl-7 col-lg-9 col-md-7 col-12"}>
                         <div className={"row"}>
                             <div className={"col-lg-3 col-12 col-sm-12 h-100"}>
@@ -35,7 +44,15 @@ export const Authentication = (props : {title : string, action : string, formTyp
                                 </div>
                             </div>
                             <div className={"col-lg-3 col-12 col-sm-1"}>
-                                {/* <LogOut /> */}
+                                {
+                                    (localStorage.getItem("authenticated") && localStorage.getItem("isAccountActive"))?
+                                    <div id="laterallyLogOutIconInActivateAccountScreen">
+                                        <LogOut />
+                                    </div>
+                                    :
+                                    <></>
+                                }
+                               
                             </div>
                         </div>
                     </div>
