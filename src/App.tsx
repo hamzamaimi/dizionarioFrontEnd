@@ -22,7 +22,7 @@ function App() {
                     {localStorage.getItem("authenticated") != 'true' ? (<>
                             <Route path="/"
                                     element={<Authentication title={"Bentornato a WordsMemo"} action={"Fai il login al tuo account."}
-                                                            formType={"login"}/>} />
+                                                            formType={"login"} setIsAccountActive={setisAccountActive}/>} />
                             <Route path="/registration"
                                     element={<Authentication title={"Benvenuto a WordsMemo"} action={"Crea il tuo account."}
                                                             formType={"registration"} setIsAccountActive={setisAccountActive}/>} />

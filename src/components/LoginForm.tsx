@@ -51,9 +51,7 @@ export const LoginForm =  (props : {setIsAccountActive? : React.Dispatch<React.S
 
                 
             if(!res.data.isAccountActive){
-                console.log(setIsAccountActive == null)
                 if(props.setIsAccountActive != null){
-                    alert('ciao')
                     localStorage.setItem("isAccountActive", "false");
                     localStorage.setItem("userEmail", res.data.userEmail);
                     props.setIsAccountActive(false);

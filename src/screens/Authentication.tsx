@@ -67,7 +67,7 @@ export const Authentication = (props : {title : string, action : string, formTyp
 const getFormComponent = (formType : string, setIsAccountActive? : React.Dispatch<React.SetStateAction<boolean>>) => {
     switch (formType){
         case 'login':
-            return <LoginForm/>;
+            return <LoginForm setIsAccountActive={setIsAccountActive}/>;
         case 'registration':
             return <RegistrationForm setIsAccountActive={setIsAccountActive}/>;
         case 'activateAccount':
