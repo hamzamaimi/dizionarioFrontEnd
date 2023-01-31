@@ -25,7 +25,7 @@ export const ActivateAccount = () => {
                         <input type="text" className="form-control" id="activationCode" required/>
                     </div>
 
-                    <AuthenticationButton buttonContent={"Attiva account"}/>
+                    <AuthenticationButton buttonContent={"Attiva account"} classes={"mb-4"}/>
 
                     <a id="resendAnchor" href="#" onClick={() => resendActivationCode()}>Rispedisci codice</a>  
                 </div>
