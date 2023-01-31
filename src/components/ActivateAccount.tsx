@@ -7,7 +7,7 @@ export const ActivateAccount = () => {
     const [success, setSuccess] = useState("");
     const [isSented, setIsSented] = useState(false);
 
-    if(success==""){
+    if(success=="" && localStorage.getItem("userEmail") != null){
         setSuccess("Codice di attivazione spedito all' email: \n" + localStorage.getItem("userEmail"))
     }
 
