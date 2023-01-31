@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {AlternativeAuthenticationMethods} from "./AlternativeAuthenticationMethods";
 import {AuthenticationButton} from "../microComponents/AuthenticationButton";
 import axios from "../api/axios";
+import { useNavigate } from "react-router-dom";
+import App from "../App";
 
-export const RegistrationForm = () => {
+export const RegistrationForm = (props : {setIsAccountActive? : React.Dispatch<React.SetStateAction<boolean>>}) => {
     const [error, setError] = useState("");
+    const [authenticated, setAuthenticated] = useState(false);
+    const navigate = useNavigate();
+
 
     return(
         <div className={"mx-auto authentication-form-container"}>
@@ -66,7 +71,15 @@ export const RegistrationForm = () => {
                     handleError(res.data.error);
                     return;
                 }
-                localStorage.setItem("authenticated", "true");
+                
+                if(!res.data.isAccountActive){
+                    localStorage.setItem("authenticated", "true");
+                    if(props.setIsAccountActive != null){
+                        props.setIsAccountActive(false);
+                    }
+                }
+
+                navigate('/activateAccount', {replace:true});
 
             })
 

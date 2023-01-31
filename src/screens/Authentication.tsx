@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import {RegistrationForm} from "../components/RegistrationForm";
 import {ActivateAccount} from "../components/ActivateAccount";
 
-export const Authentication = (props : {title : string, action : string, formType : string}) => {
+export const Authentication = (props : {title : string, action : string, formType : string, setIsAccountActive? : React.Dispatch<React.SetStateAction<boolean>>}) => {
     return(
         <>
             <div className={"customContainer container-fluid"}>
@@ -27,7 +27,7 @@ export const Authentication = (props : {title : string, action : string, formTyp
                                         {props.action}
                                     </p>
 
-                                    {getFormComponent(props.formType)}
+                                    {getFormComponent(props.formType, props.setIsAccountActive)}
                                 </div>
                                 <div id={"authentication-actions"}>
                                     {getAuthenticationActionAnchors(props.formType)}
@@ -41,20 +41,22 @@ export const Authentication = (props : {title : string, action : string, formTyp
             </div>
         </>
     )
+
 }
 
-const getFormComponent = (formType : string) => {
+const getFormComponent = (formType : string, setIsAccountActive? : React.Dispatch<React.SetStateAction<boolean>>) => {
     switch (formType){
         case 'login':
             return <LoginForm/>;
         case 'registration':
-            return <RegistrationForm/>;
+            return <RegistrationForm setIsAccountActive={setIsAccountActive}/>;
         case 'activateAccount':
             return <ActivateAccount/>;
         default:
             return <LoginForm />;
     }
 }
+
 const getAuthenticationActionAnchors = (formType : string) => {
     switch (formType){
         case 'login':
