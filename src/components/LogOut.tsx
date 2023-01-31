@@ -7,7 +7,11 @@ export const LogOut = () => {
     const navigate = useNavigate();
 
 
-    return(<><a onClick={() => {logOut()}}>LogOut</a></>)
+    return(<>
+            <a id="logoutAnchor" style={{cursor: 'pointer'}} onClick={() => {logOut()}}>
+                <img src="images/logout.png" width={"24"} height={"24"}/>
+            </a>
+        </>)
 
     function logOut() {
             axios.post('/eraseJwt', {}, {withCredentials:true}).then(res => {

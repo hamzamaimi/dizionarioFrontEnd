@@ -11,24 +11,26 @@ export const LoginForm = () => {
     return(
         <div className={"mx-auto authentication-form-container"}>
             <form onSubmit={(e) => checkForm(e)}>
-                {error !== "" ? (<div className='alert alert-danger' role='alert'>{error}</div>) : ''}
-                
-                <div className="mb-3 text-start">
-                    <label className="login-form-label mb-3">Email</label>
-                    <input type="email" className="form-control" id="inputEmail" required/>
+                <div>
+                    {error !== "" ? (<div className='alert alert-danger' role='alert'>{error}</div>) : ''}
+                    
+                    <div className="mb-3 text-start">
+                        <label className="login-form-label mb-3">Email</label>
+                        <input type="email" className="form-control" id="inputEmail" required/>
+                    </div>
+                    <div className="mb-3 text-start">
+                        <label className="login-form-label mb-3">Password</label>
+                        <input type="password" className="form-control" id="InputPassword" required/>
+                    </div>
+
+                    <AuthenticationButton buttonContent={"Log In"}/>
+
+                    <p id={"login-form-divider"}>
+                        <small>ACCEDI CON</small>
+                    </p>
+
+                    <AlternativeAuthenticationMethods />
                 </div>
-                <div className="mb-3 text-start">
-                    <label className="login-form-label mb-3">Password</label>
-                    <input type="password" className="form-control" id="InputPassword" required/>
-                </div>
-
-                <AuthenticationButton buttonContent={"Log In"}/>
-
-                <p id={"login-form-divider"}>
-                    <small>ACCEDI CON</small>
-                </p>
-
-                <AlternativeAuthenticationMethods />
             </form>
         </div>
     )

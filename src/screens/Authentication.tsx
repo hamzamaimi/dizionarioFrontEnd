@@ -34,10 +34,12 @@ export const Authentication = (props : {title : string, action : string, formTyp
                                     {getAuthenticationActionAnchors(props.formType)}
                                 </div>
                             </div>
-                            <div className={"col-lg-3 col-12 col-sm-1"}/>
+                            <div className={"col-lg-3 col-12 col-sm-1"}>
+                                {/* <LogOut /> */}
+                            </div>
                         </div>
                     </div>
-                    <div className={"col-xxl col-lg col-md"}><LogOut /></div>
+                    <div className={"col-xxl col-lg col-md"}></div>
                 </div>
             </div>
         </>
