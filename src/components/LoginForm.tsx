@@ -4,7 +4,7 @@ import {AlternativeAuthenticationMethods} from "./AlternativeAuthenticationMetho
 import {AuthenticationButton} from "../microComponents/AuthenticationButton";
 import { useNavigate } from "react-router-dom";
 
-export const LoginForm = () => {
+export const LoginForm =  (props : {setIsAccountActive? : React.Dispatch<React.SetStateAction<boolean>>}) => {
     const navigate = useNavigate();
     const [error, setError] = useState("");
 
@@ -36,7 +36,7 @@ export const LoginForm = () => {
     )
 
 
-    function login() {
+    function login(setIsAccountActive? : React.Dispatch<React.SetStateAction<boolean>>) {
         let email:string = (document.getElementById("inputEmail") as HTMLInputElement).value;
         let password:string = (document.getElementById("InputPassword") as HTMLInputElement).value;
 
@@ -47,9 +47,24 @@ export const LoginForm = () => {
             }
             localStorage.setItem("authenticated", "true");
 
+            localStorage.setItem("authenticated", "true");
+
+                
             if(!res.data.isAccountActive){
-                navigate('/activateAccount', {replace: true})
-                return;
+                console.log(setIsAccountActive == null)
+                if(props.setIsAccountActive != null){
+                    alert('ciao')
+                    localStorage.setItem("isAccountActive", "false");
+                    localStorage.setItem("userEmail", res.data.userEmail);
+                    props.setIsAccountActive(false);
+                }
+                return
+            }else{
+                if(props.setIsAccountActive != null){
+                    localStorage.setItem("isAccountActive", "true");
+                    localStorage.setItem("userEmail", res.data.userEmail);
+                    props.setIsAccountActive(true);
+                }
             }
         })
     }

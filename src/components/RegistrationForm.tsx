@@ -17,26 +17,26 @@ export const RegistrationForm = (props : {setIsAccountActive? : React.Dispatch<R
                 <div >
                     {error !== "" ? (<div className='alert alert-danger' role='alert'>{error}</div>) : ''}
 
-                    <div className={"row mb-3 text-start"}>
+                    <div className={"row text-start"}>
                         <div className={"col-6"}>
-                            <label className="login-form-label mb-3">Nome</label>
+                            <label className="login-form-label">Nome</label>
                             <input type="text" className="form-control" id="inputName" required/>
                         </div>
                         <div className={"col-6"}>
-                            <label className="login-form-label mb-3">Cognome</label>
+                            <label className="login-form-label">Cognome</label>
                             <input type="text" className="form-control" id="inputCognome" required/>
                         </div>
                     </div>
-                    <div className="mb-3 text-start">
-                        <label className="login-form-label mb-3">Email</label>
+                    <div className="text-start">
+                        <label className="login-form-label">Email</label>
                         <input type="email" className="form-control" id="inputEmail" required/>
                     </div>
                     <div className="mb-3 text-start">
-                        <label className="login-form-label mb-3">Password</label>
+                        <label className="login-form-label">Password</label>
                         <input type="password" className="form-control" id="InputPassword" required/>
                     </div>
-                    <div className="mb-3 text-start">
-                        <label className="login-form-label mb-3">Ripeti Password</label>
+                    <div className="mb-4 text-start">
+                        <label className="login-form-label">Ripeti Password</label>
                         <input type="password" className="form-control" id="InputPassword1" required/>
                     </div>
 
