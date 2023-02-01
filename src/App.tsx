@@ -31,7 +31,7 @@ function App() {
                             {!isAccountActive ? (
                                 <>
                                     <Route path="/" element={<Authentication title={"WordsMemo"} action={"Attiva il tuo account."}
-                                        formType={"activateAccount"}/>} />
+                                        formType={"activateAccount"} setIsAccountActive={setisAccountActive}/>} />
                                     <Route path="*" element={<Navigate to="/" />} />
                                 </>
                             ):(<>

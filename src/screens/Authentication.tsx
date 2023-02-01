@@ -71,9 +71,9 @@ const getFormComponent = (formType : string, setIsAccountActive? : React.Dispatc
         case 'registration':
             return <RegistrationForm setIsAccountActive={setIsAccountActive}/>;
         case 'activateAccount':
-            return <ActivateAccount/>;
+            return <ActivateAccount setIsAccountActive={setIsAccountActive}/>;
         default:
-            return <LoginForm />;
+            return <LoginForm  setIsAccountActive={setIsAccountActive}/>;
     }
 }
 

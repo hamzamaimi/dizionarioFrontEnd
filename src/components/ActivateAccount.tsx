@@ -1,14 +1,17 @@
 import React, { useState } from "react";
 import axios from "../api/axios";
 import { AuthenticationButton } from "../microComponents/AuthenticationButton";
+import { useNavigate } from 'react-router-dom';
 
-export const ActivateAccount = () => {
+export const ActivateAccount = (props : {setIsAccountActive? : React.Dispatch<React.SetStateAction<boolean>>}) => {
+    const navigate = useNavigate();
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
+    const [firstSendMessage, setfirstSendMessage] = useState("");
     const [isSented, setIsSented] = useState(false);
 
-    if(success=="" && localStorage.getItem("userEmail") != null){
-        setSuccess("Codice di attivazione spedito all' email: \n" + localStorage.getItem("userEmail"))
+    if(firstSendMessage=="" && localStorage.getItem("userEmail") != null){
+        setfirstSendMessage("Codice di attivazione spedito all' email: \n" + localStorage.getItem("userEmail"));
     }
 
     return(
@@ -17,6 +20,7 @@ export const ActivateAccount = () => {
                 <div>
                     {error !== "" ? (<div className='alert alert-danger' role='alert'>{error}</div>) : ''}
                     {success !== "" ? (<div className='alert alert-success' role='alert'>{success}</div>) : ''}
+                    {firstSendMessage !== "" ? (<div className='alert alert-success' role='alert'>{firstSendMessage}</div>) : ''}
                     
                     <div className="mb-3 text-start">
                         <label className="login-form-label mb-3">
@@ -27,7 +31,11 @@ export const ActivateAccount = () => {
 
                     <AuthenticationButton buttonContent={"Attiva account"} classes={"mb-4"}/>
 
-                    <a id="resendAnchor" href="#" onClick={() => resendActivationCode()}>Rispedisci codice</a>  
+                    <a id="resendAnchor" href="#" onClick={() => resendActivationCode()}>Rispedisci codice</a>
+                    <br/>  
+                    <div id="activateAccountSpinner" className="spinner-border text-primary d-none" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                    </div>
                 </div>
             </form>
         </div>
@@ -35,8 +43,26 @@ export const ActivateAccount = () => {
 
     function checkForm(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
+        activateAccountPostRequest();
     }
 
+    function activateAccountPostRequest(){
+        const otpCode : string = (document.getElementById("activationCode") as HTMLInputElement).value;
+        axios.post('/activateAccount', {
+            'activationCode' : otpCode
+        }, {withCredentials: true}).then(res => {
+            localStorage.removeItem('userEmail');
+            setfirstSendMessage('');
+            if (res.data.hasOwnProperty("error")) {
+                handleError(res.data.error);
+                return;
+            }
+            if(res.data.hasOwnProperty("success")){
+                handleSuccess(res.data);
+            }
+
+        })
+    }
 
     function resendActivationCode(): React.MouseEventHandler<HTMLAnchorElement> | void {
         if(!isSented){
@@ -45,7 +71,7 @@ export const ActivateAccount = () => {
                     handleError(res.data.error);
                     return;
                 }
-                else if(res.data.hasOwnProperty("success")){
+                if(res.data.hasOwnProperty("success")){
                     handleSuccess(res.data);
                 }
             })
@@ -56,9 +82,15 @@ export const ActivateAccount = () => {
 
     function handleError(error: any) {
         switch(error){
-            case "authentication token is missing.":
-                setError('Errore durante l\'autenticazione, prego riesigure l\'accesso.');
-            break;
+            case "authentication token is missing." || "user not found.":
+                setError('Errore durante l\'autenticazione, la preghiamo di riesiguire l\'accesso.');
+                break;
+            case "activation code is wrong!":
+                setError('Il codice immesso è errato!');
+                break;
+            case "activation code has been changed!":
+                setError('Hai superato il numero massimo di tentativi, Per attivare l\'account rispedisci il codice di attivazione utilizzando il pulsante in basso!');
+                break;
         }
     }
 
@@ -68,7 +100,23 @@ export const ActivateAccount = () => {
         switch(data.success){
             case "email has been sent.":
                 setSuccess('Codice di attivazione spedito all\' email: \n \n'+ email);
-            break;
+                break;
+            case "account is been activated.":
+                setSuccess('L\'account è stato attivato, a breve verrai rediretto alla HomePage');
+                redirectHomePage();
+                break;
         }
+    }
+
+    function redirectHomePage(){
+        document.getElementById('activateAccountSpinner')?.classList.remove("d-none");
+        localStorage.setItem("isAccountActive", "true");
+        console.log(props.setIsAccountActive);
+        if(props.setIsAccountActive != null){props.setIsAccountActive(true);}
+        navigate('', {replace : true})
+
+        setTimeout(function() {
+            navigate('', {replace : true})
+        }, 3000);
     }
 }
