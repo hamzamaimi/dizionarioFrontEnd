@@ -20,7 +20,7 @@ export const ActivateAccount = (props : {setIsAccountActive? : React.Dispatch<Re
                 <div>
                     {error !== "" ? (<div className='alert alert-danger' role='alert'>{error}</div>) : ''}
                     {success !== "" ? (<div className='alert alert-success' role='alert'>{success}</div>) : ''}
-                    {firstSendMessage !== "" ? (<div className='alert alert-success' role='alert'>{firstSendMessage}</div>) : ''}
+                    {firstSendMessage !== "" ? (<div className='alert alert-success' id="firstSendMessage" role='alert'>{firstSendMessage}</div>) : ''}
                     
                     <div className="mb-3 text-start">
                         <label className="login-form-label mb-3">
@@ -65,6 +65,7 @@ export const ActivateAccount = (props : {setIsAccountActive? : React.Dispatch<Re
     }
 
     function resendActivationCode(): React.MouseEventHandler<HTMLAnchorElement> | void {
+        document.getElementById("firstSendMessage")?.classList.add('d-none');
         if(!isSented){
             axios.post("/resendActivationCode", {}, {withCredentials: true}).then(res => {
                 if (res.data.hasOwnProperty("error")) {
@@ -111,12 +112,9 @@ export const ActivateAccount = (props : {setIsAccountActive? : React.Dispatch<Re
     function redirectHomePage(){
         document.getElementById('activateAccountSpinner')?.classList.remove("d-none");
         localStorage.setItem("isAccountActive", "true");
-        console.log(props.setIsAccountActive);
-        if(props.setIsAccountActive != null){props.setIsAccountActive(true);}
-        navigate('', {replace : true})
 
         setTimeout(function() {
-            navigate('', {replace : true})
+            navigate('/homePage', {replace : true})
         }, 3000);
     }
 }

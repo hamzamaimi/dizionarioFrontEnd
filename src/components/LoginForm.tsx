@@ -46,9 +46,6 @@ export const LoginForm =  (props : {setIsAccountActive? : React.Dispatch<React.S
                 return;
             }
             localStorage.setItem("authenticated", "true");
-
-            localStorage.setItem("authenticated", "true");
-
                 
             if(!res.data.isAccountActive){
                 if(props.setIsAccountActive != null){
@@ -56,6 +53,7 @@ export const LoginForm =  (props : {setIsAccountActive? : React.Dispatch<React.S
                     localStorage.setItem("userEmail", res.data.userEmail);
                     props.setIsAccountActive(false);
                 }
+                navigate('/activateAccount', {replace:true})
                 return
             }else{
                 if(props.setIsAccountActive != null){
@@ -63,6 +61,7 @@ export const LoginForm =  (props : {setIsAccountActive? : React.Dispatch<React.S
                     localStorage.setItem("userEmail", res.data.userEmail);
                     props.setIsAccountActive(true);
                 }
+                navigate('/activateAccount', {replace:true})
             }
         })
     }
