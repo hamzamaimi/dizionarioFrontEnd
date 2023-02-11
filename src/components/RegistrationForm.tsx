@@ -3,7 +3,6 @@ import {AlternativeAuthenticationMethods} from "./AlternativeAuthenticationMetho
 import {AuthenticationButton} from "../microComponents/AuthenticationButton";
 import axios from "../api/axios";
 import { useNavigate } from "react-router-dom";
-import App from "../App";
 
 export const RegistrationForm = (props : {setIsAccountActive? : React.Dispatch<React.SetStateAction<boolean>>}) => {
     const [error, setError] = useState("");

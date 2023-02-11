@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
-import { BrowserRouter, Navigate, Route, Routes, useNavigate } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import {Authentication} from "./screens/Authentication";
-import { CookiesProvider, useCookies } from 'react-cookie';
+import { CookiesProvider } from 'react-cookie';
 import { HomePage } from './screens/HomePage';
 import { PrivateRoutes } from './utils/PrivateRoutes';
 
@@ -11,7 +11,7 @@ function App() {
     const [isAccountActive, setisAccountActive] = useState(true);
 
     if(localStorage.getItem("authenticated") && !isLoggedIn){setisLoggedIn(true)};
-    if(localStorage.getItem("isAccountActive") == 'false' && isAccountActive){
+    if(localStorage.getItem("isAccountActive") === 'false' && isAccountActive){
         setisAccountActive(false);
     }
     

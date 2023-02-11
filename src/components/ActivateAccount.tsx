@@ -17,7 +17,7 @@ export const ActivateAccount = (props : {setIsAccountActive? : React.Dispatch<Re
         }
     })
 
-    if(firstSendMessage=="" && localStorage.getItem("userEmail") != null){
+    if(firstSendMessage==="" && localStorage.getItem("userEmail") !== null){
         setfirstSendMessage("Codice di attivazione spedito all' email: \n" + localStorage.getItem("userEmail"));
     }
 
@@ -38,7 +38,7 @@ export const ActivateAccount = (props : {setIsAccountActive? : React.Dispatch<Re
 
                     <AuthenticationButton buttonContent={"Attiva account"} classes={"mb-4"}/>
 
-                    <a id="resendAnchor" href="#" onClick={() => resendActivationCode()}>Rispedisci codice</a>
+                    <span id="resendAnchor" onClick={() => resendActivationCode()}>Rispedisci codice</span>
                     <br/>  
                     <div id="activateAccountSpinner" className="spinner-border text-primary d-none" role="status">
                         <span className="visually-hidden">Loading...</span>
@@ -103,7 +103,7 @@ export const ActivateAccount = (props : {setIsAccountActive? : React.Dispatch<Re
     }
 
     function handleSuccess(data: any) {
-        const email = new String(data.email);
+        const email = data.email;
 
         switch(data.success){
             case "email has been sent.":

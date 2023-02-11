@@ -10,6 +10,38 @@ body {
   height: 100%;
 }
 
+@media (min-width: 768px) {
+  #upperLogOutIconInActivateAccountScreen {
+    display: none;
+  }
+}
+@media (min-width: 992px) {
+  .authentication-form-container {
+    margin-top: 15%;
+  }
+}
+@media (min-width: 1200px) {
+  #authentication-content {
+    margin-top: 10vh;
+  }
+}
+@media (max-width: 768px) {
+  #laterallyLogOutIconInActivateAccountScreen {
+    display: none;
+  }
+}
+@media (max-width: 992px) {
+  #project-logo {
+    width: 60%;
+    margin: 0 auto;
+    display: block;
+  }
+}
+@media (min-width: 576px) and (max-width: 993px) {
+  .authentication-sm-1 {
+    display: block !important;
+  }
+}
 .customContainer {
   background: #F7F9FA;
   width: 100%;
@@ -117,37 +149,9 @@ body {
   color: #29c9f8;
 }
 
-@media (min-width: 768px) {
-  #upperLogOutIconInActivateAccountScreen {
-    display: none;
-  }
-}
-@media (min-width: 992px) {
-  .authentication-form-container {
-    margin-top: 15%;
-  }
-}
-@media (min-width: 1200px) {
-  #authentication-content {
-    margin-top: 10vh;
-  }
-}
-@media (max-width: 768px) {
-  #laterallyLogOutIconInActivateAccountScreen {
-    display: none;
-  }
-}
-@media (max-width: 992px) {
-  #project-logo {
-    width: 60%;
-    margin: 0 auto;
-    display: block;
-  }
-}
-@media (min-width: 576px) and (max-width: 993px) {
-  .authentication-sm-1 {
-    display: block !important;
-  }
+#resendAnchor {
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 /*# sourceMappingURL=Authentication.css.map */
