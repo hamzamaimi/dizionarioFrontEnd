@@ -1,10 +1,12 @@
 import React from 'react';
 import {Outlet, Navigate} from 'react-router-dom'
 
-export const AuthenticationRoutes = () => {
+export const PrivateRoutes = () => {
     let auth = localStorage.getItem('authenticated');
 
+    let toActivate : boolean = (auth === "true");
+
     return(
-        auth !== "true" ? <Outlet /> : null
+        toActivate ? <Outlet /> : <Navigate to={"/login"} />
     )
 }

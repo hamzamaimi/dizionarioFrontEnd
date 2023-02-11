@@ -7,9 +7,11 @@ import App from "../App";
 
 export const RegistrationForm = (props : {setIsAccountActive? : React.Dispatch<React.SetStateAction<boolean>>}) => {
     const [error, setError] = useState("");
-    const [authenticated, setAuthenticated] = useState(false);
     const navigate = useNavigate();
 
+    useEffect(()=>{
+        navigateToHomeOrActivationPage();
+    })
 
     return(
         <div className={"mx-auto authentication-form-container"}>
@@ -82,6 +84,7 @@ export const RegistrationForm = (props : {setIsAccountActive? : React.Dispatch<R
                         localStorage.setItem("userEmail", res.data.userEmail);
                         props.setIsAccountActive(false);
                     }
+                    navigate('/activateAccount', {replace:true})
                     return
                 }else{
                     if(props.setIsAccountActive != null){
@@ -89,6 +92,7 @@ export const RegistrationForm = (props : {setIsAccountActive? : React.Dispatch<R
                         localStorage.setItem("userEmail", res.data.userEmail);
                         props.setIsAccountActive(true);
                     }
+                    navigate('/activateAccount', {replace:true})
                 }
 
             })
@@ -116,7 +120,18 @@ export const RegistrationForm = (props : {setIsAccountActive? : React.Dispatch<R
             
         }
     }
-    
+
+    function navigateToHomeOrActivationPage() {
+        let auth = localStorage.getItem('authenticated');
+        let accountActive = localStorage.getItem('isAccountActive');
+        if(auth === "true"){
+            if(accountActive === "true"){
+                navigate('/homePage', {replace:true});
+            }else{
+                navigate('/activateAccount', {replace:true})
+            }
+        }
+    }
 
 }
 

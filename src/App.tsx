@@ -4,9 +4,7 @@ import { BrowserRouter, Navigate, Route, Routes, useNavigate } from "react-route
 import {Authentication} from "./screens/Authentication";
 import { CookiesProvider, useCookies } from 'react-cookie';
 import { HomePage } from './screens/HomePage';
-import { AuthenticationRoutes } from './utils/AuthenticationRoutes';
-import { ActivateAccountRoutes } from './utils/ActivateAccountRoutes';
-import { ApplicationRoutes } from './utils/ApplicationRoutes';
+import { PrivateRoutes } from './utils/PrivateRoutes';
 
 function App() {
     const [isLoggedIn, setisLoggedIn] = useState(false);
@@ -22,23 +20,18 @@ function App() {
         <CookiesProvider>
             <BrowserRouter>
                 <Routes>
-                    <Route element={<ApplicationRoutes /> }>
-                        <Route index path="/homePage" element={<HomePage />} />
-                        <Route path="*" element={<Navigate to="/" replace={true}/>} />
-                    </Route>
-                    <Route element={<ActivateAccountRoutes/>}>
+                    <Route path="/login"
+                            element={<Authentication title={"Bentornato a WordsMemo"} action={"Fai il login al tuo account."}
+                                                    formType={"login"} setIsAccountActive={setisAccountActive}/>} />
+                    <Route path="/registration"
+                            element={<Authentication title={"Benvenuto a WordsMemo"} action={"Crea il tuo account."}
+                                                    formType={"registration"} setIsAccountActive={setisAccountActive}/>} />
+                    <Route path="*" element={<Navigate to="/login" />} />
+                    
+                    <Route element={<PrivateRoutes/>}>
                         <Route path="/activateAccount" element={<Authentication title={"WordsMemo"} action={"Attiva il tuo account."}
                                 formType={"activateAccount"} setIsAccountActive={setisAccountActive}/>} />
-                        <Route path="*" element={<Navigate to="/activateAccount" />} />
-                    </Route>
-                    <Route element={<AuthenticationRoutes/>}>
-                        <Route path="/login"
-                                element={<Authentication title={"Bentornato a WordsMemo"} action={"Fai il login al tuo account."}
-                                                        formType={"login"} setIsAccountActive={setisAccountActive}/>} />
-                        <Route path="/registration"
-                                element={<Authentication title={"Benvenuto a WordsMemo"} action={"Crea il tuo account."}
-                                                        formType={"registration"} setIsAccountActive={setisAccountActive}/>} />
-                        <Route path="*" element={<Navigate to="/login" />} />
+                        <Route index path="/homePage" element={<HomePage />} />
                     </Route>
                 </Routes>
             </BrowserRouter>

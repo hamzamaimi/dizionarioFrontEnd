@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "../api/axios";
 import { AuthenticationButton } from "../microComponents/AuthenticationButton";
 import { useNavigate } from 'react-router-dom';
@@ -9,6 +9,13 @@ export const ActivateAccount = (props : {setIsAccountActive? : React.Dispatch<Re
     const [success, setSuccess] = useState("");
     const [firstSendMessage, setfirstSendMessage] = useState("");
     const [isSented, setIsSented] = useState(false);
+
+    useEffect(()=>{
+        let accountActive = localStorage.getItem('isAccountActive');
+        if(accountActive === "true"){
+            navigate('/homePage', {replace:true});
+        }
+    })
 
     if(firstSendMessage=="" && localStorage.getItem("userEmail") != null){
         setfirstSendMessage("Codice di attivazione spedito all' email: \n" + localStorage.getItem("userEmail"));

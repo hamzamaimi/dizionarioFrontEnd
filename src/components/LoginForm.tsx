@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import axios from '../api/axios';
 import {AlternativeAuthenticationMethods} from "./AlternativeAuthenticationMethods";
 import {AuthenticationButton} from "../microComponents/AuthenticationButton";
@@ -8,6 +8,10 @@ export const LoginForm =  (props : {setIsAccountActive? : React.Dispatch<React.S
     const navigate = useNavigate();
     const [error, setError] = useState("");
 
+    useEffect(()=>{
+        navigateToHomeOrActivationPage();
+    })
+   
     return(
         <div className={"mx-auto authentication-form-container"}>
             <form onSubmit={(e) => checkForm(e)}>
@@ -53,7 +57,7 @@ export const LoginForm =  (props : {setIsAccountActive? : React.Dispatch<React.S
                     localStorage.setItem("userEmail", res.data.userEmail);
                     props.setIsAccountActive(false);
                 }
-                navigate('/activateAccount', {replace:true})
+                navigateToHomeOrActivationPage()
                 return
             }else{
                 if(props.setIsAccountActive != null){
@@ -61,7 +65,7 @@ export const LoginForm =  (props : {setIsAccountActive? : React.Dispatch<React.S
                     localStorage.setItem("userEmail", res.data.userEmail);
                     props.setIsAccountActive(true);
                 }
-                navigate('/activateAccount', {replace:true})
+                navigateToHomeOrActivationPage()
             }
         })
     }
@@ -82,5 +86,18 @@ export const LoginForm =  (props : {setIsAccountActive? : React.Dispatch<React.S
         }
                
     }
+
+    function navigateToHomeOrActivationPage() {
+        let auth = localStorage.getItem('authenticated');
+        let accountActive = localStorage.getItem('isAccountActive');
+        if(auth === "true"){
+            if(accountActive === "true"){
+                navigate('/homePage', {replace:true});
+            }else{
+                navigate('/activateAccount', {replace:true})
+            }
+        }
+    }
+
 }
 
