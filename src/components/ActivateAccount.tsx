@@ -111,17 +111,16 @@ export const ActivateAccount = (props : {setIsAccountActive? : React.Dispatch<Re
                 break;
             case "account is been activated.":
                 setSuccess('L\'account è stato attivato, a breve verrai rediretto alla HomePage');
-                redirectHomePage();
+                document.getElementById('activateAccountSpinner')?.classList.remove("d-none");
+                setTimeout(()=>{
+                    redirectHomePage();
+                }, 3000)
                 break;
         }
     }
 
     function redirectHomePage(){
-        document.getElementById('activateAccountSpinner')?.classList.remove("d-none");
         localStorage.setItem("isAccountActive", "true");
-
-        setTimeout(function() {
-            navigate('/homePage', {replace : true})
-        }, 3000);
+        navigate('/homePage', {replace : true})
     }
 }
