@@ -1,4 +1,6 @@
-// MEDIA QUEIRES 
+@import "Base_styles";
+
+//                           MEDIA QUEIRES 
 
 // Small devices (landscape phones, 576px and up)
 @media (min-width: 576px) { }
@@ -31,3 +33,7 @@
 
 // XX-Large devices (larger desktops, 1400px and up)
 @media (max-width: 1400px) { }
+
+.m-width-70{
+    max-width: 70%;
+}

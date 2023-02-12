@@ -10,6 +10,12 @@ body {
   height: 100%;
 }
 
+.customContainer {
+  background: #F7F9FA;
+  width: 100%;
+  height: 100%;
+}
+
 @media (min-width: 768px) {
   #upperLogOutIconInActivateAccountScreen {
     display: none;
@@ -42,12 +48,6 @@ body {
     display: block !important;
   }
 }
-.customContainer {
-  background: #F7F9FA;
-  width: 100%;
-  height: 100%;
-}
-
 #authentication-sub-title {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
   font-size: 22px;
