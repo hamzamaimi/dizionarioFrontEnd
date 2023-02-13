@@ -24,4 +24,10 @@ body {
   max-width: 70%;
 }
 
+.fix-bottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
 /*# sourceMappingURL=Application.css.map */
