@@ -5,6 +5,8 @@ import {Authentication} from "./screens/Authentication";
 import { CookiesProvider } from 'react-cookie';
 import { HomePage } from './screens/HomePage';
 import { PrivateRoutes } from './utils/PrivateRoutes';
+import { ManageTables } from './screens/ManageTables';
+import { DoQuiz } from './screens/DoQuiz';
 
 function App() {
     const [isLoggedIn, setisLoggedIn] = useState(false);
@@ -32,6 +34,8 @@ function App() {
                         <Route path="/activateAccount" element={<Authentication title={"WordsMemo"} action={"Attiva il tuo account."}
                                 formType={"activateAccount"} setIsAccountActive={setisAccountActive}/>} />
                         <Route index path="/homePage" element={<HomePage />} />
+                        <Route path='/manageTables' element={<ManageTables />} />
+                        <Route path='/DoQuiz' element={<DoQuiz />} />
                     </Route>
                 </Routes>
             </BrowserRouter>
