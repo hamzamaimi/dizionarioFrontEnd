@@ -4,17 +4,26 @@ import { LogoWithLogOut } from "../components/LogoWithLogOut";
 
 
 export const ManageTables = () => {
-  const [translations, setTranslation] = useState(null);
+  const [translations, setTranslation] = useState({});
   const [groupName, setGroupName] = useState("");
 
 
   useEffect (() => {
-      if(translations === null){
-      axios.get("/manageTranslation", {params: {"GroupName": groupName} , withCredentials: true}).then((resp)=>{
-        setTranslation(resp.data.translations)
-      })
-    }
+    axios.get("/manageTranslation", {params: {"GroupName": groupName} , withCredentials: true}).then((resp)=>{
+      setTranslation(resp.data.translations);
+    })
   }, [])
+
+  let translationsRows = Object.values(translations).map((k:any) => {
+    return(
+      <tr key={k.id} id={k.id}>
+        <th>-</th>
+        <td>{k.originalWord}</td>
+        <td>{k.translatedWord}</td>
+        <td>{k.groupName}</td>
+      </tr>
+    )
+  })
 
   return (
     <>
@@ -27,7 +36,7 @@ export const ManageTables = () => {
               <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
             </div>
           </div>
-          <div className="col-8">ciao</div>
+          <div className="col-8"></div>
         </div>
 
         <div className="row">
@@ -42,24 +51,7 @@ export const ManageTables = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Larry the Bird</td>
-                  <td>@twitter</td>
-                  <td>@twitter</td>
-                </tr>
+                {translationsRows}
               </tbody>
             </table>
           </div>
