@@ -29,16 +29,7 @@ export const ManageTables = () => {
     <>
       <div className={"customContainer container-fluid"}>
         <LogoWithLogOut />
-
-        <div className="row">
-          <div className="col-4">
-            <div className="form-check form-switch">
-              <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
-            </div>
-          </div>
-          <div className="col-8"></div>
-        </div>
-
+        
         <div className="row">
           <div className="col-12">
             <table className="table table-striped">
