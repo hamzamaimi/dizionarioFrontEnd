@@ -29,7 +29,7 @@ export const ManageTables = () => {
     <>
       <div className={"customContainer container-fluid"}>
         <LogoWithLogOut />
-        
+
         <div className="row">
           <div className="col-12">
             <table className="table table-striped">
@@ -42,6 +42,21 @@ export const ManageTables = () => {
                 </tr>
               </thead>
               <tbody>
+                <tr>
+                  <th>
+                    <button className="btn btn-primary">Inserisci</button>
+                  </th>
+                  <td>
+                    <input className="form-control" placeholder="parola" type="text"/>
+                  </td>
+                  <td>
+                    <input className="form-control" placeholder="traduzione" type="text"/>
+                  </td>
+                  <td>
+                    <input className="form-control" placeholder="tabella" type="text"/>
+                  </td>
+                </tr>
+
                 {translationsRows}
               </tbody>
             </table>
