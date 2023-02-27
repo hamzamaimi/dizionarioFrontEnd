@@ -27,9 +27,9 @@ export const ManageTables = () => {
     )
   })
 
-
   return (
     <>
+      <form onSubmit={(e) => checkForm(e)} id="insertWord"/>
       <div className={"customContainer container-fluid"}>
         <LogoWithLogOut/>
 
@@ -54,4 +54,15 @@ export const ManageTables = () => {
       </div>
     </>
   );
+
+  function insertWord() {
+    alert('ciao');
+  }
+
+  function checkForm(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    insertWord();
+  }
+
+
 };
