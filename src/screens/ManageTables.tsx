@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "../api/axios";
+import { AddWordForm } from "../components/AddWordForm";
 import { LogoWithLogOut } from "../components/LogoWithLogOut";
 
 
@@ -11,6 +12,7 @@ export const ManageTables = () => {
   useEffect (() => {
     axios.get("/manageTranslation", {params: {"GroupName": groupName} , withCredentials: true}).then((resp)=>{
       setTranslation(resp.data.translations);
+      setGroupName(resp.data.groupNames);
     })
   }, [])
 
@@ -25,10 +27,11 @@ export const ManageTables = () => {
     )
   })
 
+
   return (
     <>
       <div className={"customContainer container-fluid"}>
-        <LogoWithLogOut />
+        <LogoWithLogOut/>
 
         <div className="row">
           <div className="col-12">
@@ -42,21 +45,7 @@ export const ManageTables = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th>
-                    <button className="btn btn-primary">Inserisci</button>
-                  </th>
-                  <td>
-                    <input className="form-control" placeholder="parola" type="text"/>
-                  </td>
-                  <td>
-                    <input className="form-control" placeholder="traduzione" type="text"/>
-                  </td>
-                  <td>
-                    <input className="form-control" placeholder="tabella" type="text"/>
-                  </td>
-                </tr>
-
+                <AddWordForm groupNames={groupName}/>
                 {translationsRows}
               </tbody>
             </table>
