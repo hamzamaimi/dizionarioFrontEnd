@@ -8,7 +8,7 @@ export const AddWordForm = (props: {groupNames : String}) => {
     })
 
     return(<>
-        <tr>
+        <tr id="firstRow">
             <td>
                 <button type="submit" form="insertWord" className="btn btn-primary">Inserisci</button>
             </td>
@@ -19,7 +19,7 @@ export const AddWordForm = (props: {groupNames : String}) => {
                 <input form="insertWord" required className="form-control" placeholder="traduzione" type="text" id="traduzione"/>
             </td>
             <td>
-                <input form="insertWord" required className="form-control" list="datalistOptions" id="exampleDataList" placeholder="tabella" />
+                <input form="insertWord" required className="form-control" list="datalistOptions" id="group" placeholder="tabella" />
                 <datalist id="datalistOptions">
                     {optionValues}
                 </datalist>
