@@ -35,7 +35,14 @@ export const ManageTables = () => {
   }, [translations])
 
   function deleteRow(e: React.MouseEvent){
-    console.log((e.target as HTMLInputElement).id)
+    axios.delete("/manageTranslation", {data:{"wordId":(e.target as HTMLInputElement).id}, withCredentials: true}).then((resp)=>{
+      if (resp.data.hasOwnProperty("error")) {
+        handleManageTablesError(resp.data.error);
+        return;
+      }
+      handleManageTablesSuccess(resp.data.success);
+      setAddedNewWord(Math.random())
+    })
   }
 
   return (
@@ -77,11 +84,10 @@ export const ManageTables = () => {
       {original_word:originalWord, translated_word:translatedWord, groupName:groupName},
       {withCredentials:true}).then(res => {
         if (res.data.hasOwnProperty("error")) {
-          handleInsertError(res.data.error);
+          handleManageTablesError(res.data.error);
           return;
         }
-        let wordId = res.data.wordId;
-        handleInsertSuccess(originalWord, translatedWord, groupName);
+        handleManageTablesSuccess(res.data.success);
         setAddedNewWord(Math.random())
       })
   }
@@ -91,7 +97,7 @@ export const ManageTables = () => {
     insertWord();
   }
 
-  function handleInsertError(error: any) {
+  function handleManageTablesError(error: any) {
     switch(error){
       case "words error":
         setError('Tutti e tre i campi sono obbligatori!');
@@ -103,9 +109,16 @@ export const ManageTables = () => {
     }
   }
 
-  function handleInsertSuccess(originalWord: string, translatedWord: string, group: string) {
-      setSuccess("La parola è stata inserita correttamente.")
-      setError('');
+  function handleManageTablesSuccess(success : any) {
+      switch(success){
+        case "delete correctly done!":
+          setError('');
+          setSuccess("La parola è stata eliminata correttamente.")
+          break;
+        default:
+          setSuccess("La parola è stata inserita correttamente.")
+          setError('');
+      }
   }
   
 }
