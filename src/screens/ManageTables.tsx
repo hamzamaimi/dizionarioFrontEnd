@@ -20,14 +20,22 @@ export const ManageTables = () => {
 
   let translationsRows = Object.values(translations).map((k:any) => {
     return(
-      <tr key={k.id} id={k.id}>
-        <td>-</td>
+      <tr key={k.id}>
+        <td className="text-center">
+          <button type="button" className="btn btn-outline-secondary">
+            <img onClick={(e) => {deleteRow(e);}} id={k.id} src="images/trash3.svg" width={"24"} height={"24"}/>
+          </button>
+        </td>
         <td>{k.originalWord}</td>
         <td>{k.translatedWord}</td>
         <td>{k.groupName}</td>
       </tr>
     )
   })
+
+  function deleteRow(e: React.MouseEvent){
+    console.log((e.target as HTMLInputElement).id)
+  }
 
   return (
     <>
@@ -61,8 +69,11 @@ export const ManageTables = () => {
   );
 
   function addWordToTable(originalWord: string, translatedWord: string, groupName: string, wordId : string) {
-    var row : string = "<tr id=\""+wordId+"\">  \
-      <td>-</td> \
+    var row : string = "<tr>  \
+      <td class='text-center'>\
+      <button type='button' class='btn btn-outline-secondary'>\
+      <img onClick='(e)=>{deleteRow(e);}' id=\""+wordId+"\" src='images/trash3.svg' width='24' height='24'/>\
+      </td>\
       <td>"+originalWord+"</td>\
       <td>"+translatedWord+"</td>\
       <td>"+groupName+"</td>\
@@ -108,6 +119,5 @@ export const ManageTables = () => {
       setSuccess("La parola è stata inserita correttamente.")
       setError('');
   }
-
+  
 }
-

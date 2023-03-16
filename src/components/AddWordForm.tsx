@@ -9,7 +9,7 @@ export const AddWordForm = (props: {groupNames : String}) => {
 
     return(<>
         <tr id="firstRow">
-            <td>
+            <td className="text-center">
                 <button type="submit" form="insertWord" className="btn btn-primary">Inserisci</button>
             </td>
             <td>
