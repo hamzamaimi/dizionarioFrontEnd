@@ -9,14 +9,15 @@ export const ManageTables = () => {
   const [groupName, setGroupName] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [addedNewWord, setAddedNewWord] = useState(0);
 
 
   useEffect (() => {
-    axios.get("/manageTranslation", {params: {"groupName": groupName} , withCredentials: true}).then((resp)=>{
+    axios.get("/manageTranslation", {withCredentials: true}).then((resp)=>{
       setTranslation(resp.data.translations);
       setGroupName(resp.data.groupNames);
     })
-  }, [])
+  }, [addedNewWord])
 
   let translationsRows = Object.values(translations).map((k:any) => {
     return(
@@ -31,7 +32,7 @@ export const ManageTables = () => {
         <td>{k.groupName}</td>
       </tr>
     )
-  })
+  }, [translations])
 
   function deleteRow(e: React.MouseEvent){
     console.log((e.target as HTMLInputElement).id)
@@ -68,19 +69,6 @@ export const ManageTables = () => {
     </>
   );
 
-  function addWordToTable(originalWord: string, translatedWord: string, groupName: string, wordId : string) {
-    var row : string = "<tr>  \
-      <td class='text-center'>\
-      <button type='button' class='btn btn-outline-secondary'>\
-      <img onClick='(e)=>{deleteRow(e);}' id=\""+wordId+"\" src='images/trash3.svg' width='24' height='24'/>\
-      </td>\
-      <td>"+originalWord+"</td>\
-      <td>"+translatedWord+"</td>\
-      <td>"+groupName+"</td>\
-      </tr>"
-    $('#firstRow').after(row);
-  }
-
   function insertWord() {
     let originalWord:string = (document.getElementById("parola") as HTMLInputElement).value;
     let translatedWord:string = (document.getElementById("traduzione") as HTMLInputElement).value;
@@ -94,7 +82,7 @@ export const ManageTables = () => {
         }
         let wordId = res.data.wordId;
         handleInsertSuccess(originalWord, translatedWord, groupName);
-        addWordToTable(originalWord, translatedWord, groupName, wordId);
+        setAddedNewWord(Math.random())
       })
   }
 
