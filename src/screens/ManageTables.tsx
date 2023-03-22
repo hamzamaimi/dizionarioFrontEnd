@@ -88,7 +88,10 @@ export const ManageTables = () => {
           return;
         }
         handleManageTablesSuccess(res.data.success);
-        setAddedNewWord(Math.random())
+        setAddedNewWord(Math.random());
+        (document.getElementById("parola") as HTMLInputElement).value = '';
+        (document.getElementById("traduzione") as HTMLInputElement).value = '';
+        (document.getElementById("group") as HTMLInputElement).value = '';
       })
   }
 

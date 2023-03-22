@@ -4,7 +4,7 @@ import { LogOut } from "./LogOut";
 
 export const LogoWithLogOut = () => {
     return(<>
-            <div className="row">
+            <div id="logoWithLogOut" className="row">
                 <div className="col-12 col-md-2"></div>
                 <div className="col-12 col-md-8">
                     <div className="row">

@@ -2,7 +2,7 @@ import React from "react";
 
 export const WorldFlags = () => {
     return(<>
-        <div className="row text-center fix-bottom">
+        <div id="worldFlags" className="row text-center fix-bottom">
             <div className="col-4 col-lg-2">
                 <img className="m-width-70" src="images/bandieraCina.png" alt="bandiera cina"/>
             </div>
