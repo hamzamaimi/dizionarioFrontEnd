@@ -1,0 +1,152 @@
+@import "Base_styles";
+
+//                                                                              MEDIA QUERIES
+
+@media (min-width: 576px) { }
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  #upperLogOutIconInActivateAccountScreen{
+    display: none;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .authentication-form-container{
+    margin-top: 15%;
+  }
+}
+
+// X-Large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { 
+  #authentication-content{
+    margin-top: 10vh;
+  }
+}
+
+// XX-Large devices (larger desktops, 1400px and up)
+@media (min-width: 1400px) { }
+
+
+
+// Small devices (landscape phones, 576px and up)
+@media (max-width: 576px) { }
+
+// Medium devices (tablets, 768px and up)
+@media (max-width: 768px) { 
+  #laterallyLogOutIconInActivateAccountScreen{
+    display: none;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (max-width: 992px) {
+  #project-logo{
+    width: 60%;
+    margin: 0 auto;
+    display: block;
+  }
+}
+
+// X-Large devices (large desktops, 1200px and up)
+@media (max-width: 1200px) { }
+
+// XX-Large devices (larger desktops, 1400px and up)
+@media (max-width: 1400px) { }
+
+
+@media (min-width: 576px) and (max-width: 993px) {
+  .authentication-sm-1{
+    display: block!important;
+  }
+}
+#authentication-sub-title{
+  font-family: $fontFamilies;
+  font-size: 22px;
+  line-height: 30px;
+  color: rgb(128, 145, 165);
+}
+#authentication-title{
+  font-family: $fontFamilies;
+  font-size: 44px;
+  line-height: 52px;
+  color:#29c9f8;
+}
+.authentication-form-container{
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.08),inset 0 0 0 1px #DBE3E7;
+  color: #536171;
+  display: block;
+  position: relative;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+#first-row{
+  padding-top: 2%;
+  position: relative;
+}
+.login-form-label{
+  font-weight: bold;
+}
+
+.authentication-form-container > form{
+  margin: 5%;
+}
+.authentication-form-container > form > div{
+  padding: 5% 0%;
+}
+#authentication-button{
+  width: 100%;
+  font-weight: bold;
+  background: linear-gradient(0deg, #3C80CF 0%, #5B9FEF 100%) no-repeat;
+}
+#project-logo{
+  width: 100%;
+}
+#login-form-divider{
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid lightgrey;
+  line-height: 0em;
+  color: grey;
+  margin-top: 8%;
+}
+#login-form-divider > small{
+  background: #fff;
+  padding: 0 10px;
+}
+.alternative-login{
+  border: 1px solid black;
+  margin-top: 5%;
+  padding: 5%;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#login-twitter{
+  border: 1px solid #9fd0f5;
+  color: #55ACEE;
+}
+#login-google{
+  border: 1px solid #efaaa1;
+  color: #dd4b39;
+}
+#login-git-hub{
+  border: 1px solid #adadad;
+  color: #333333;
+}
+#authentication-actions > p > a{
+  margin-left: 2%;
+  margin-right: 2%;
+  color: #29c9f8;
+  text-decoration: none;
+  border-bottom: dotted #29c9f8 1px;
+}
+#authentication-actions > p > span{
+  color: #29c9f8;
+}
+#resendAnchor{
+  cursor: pointer;
+  text-decoration: underline;
+}
